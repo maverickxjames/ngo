@@ -2,47 +2,89 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
+        'form_number',
+        'username',
         'password',
+        'mpin',
+        'profile_photo',
+        'referral_code',
+        'referred_by',
+        'status',
+        'activation_payment_id',
+        'joined_at',
+        'bank_details',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
+     * Attributes hidden from arrays.
      */
     protected $hidden = [
         'password',
+        'mpin',
         'remember_token',
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * The attributes casted to native types.
      */
-    protected function casts(): array
+    protected $casts = [
+        'bank_details' => 'array',
+        'joined_at'    => 'datetime',
+    ];
+
+    /**
+     * Get the user that referred this user.
+     */
+    public function parent()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->belongsTo(User::class, 'referred_by');
+    }
+
+    /**
+     * Get the users referred by this user.
+     */
+    public function children()
+    {
+        return $this->hasMany(User::class, 'referred_by');
+    }
+
+    /**
+     * Payments made by the user (activation donations).
+     */
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    /**
+     * Earnings credited to the user.
+     */
+    public function earnings()
+    {
+        return $this->hasMany(Earning::class);
+    }
+
+    /**
+     * Payouts made to the user.
+     */
+    public function payouts()
+    {
+        return $this->hasMany(Payout::class);
     }
 }
