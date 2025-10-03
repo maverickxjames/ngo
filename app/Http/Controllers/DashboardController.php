@@ -55,4 +55,31 @@ class DashboardController extends Controller
         ]);
         return back()->with('status', 'Bank details updated');
     }
+
+    public function payouts()
+    {
+        $user = Auth::user();
+        $payouts = $user->payouts()->orderBy('created_at', 'desc')->get();
+        return view('payouts.index', compact('payouts'));
+    }
+
+    public function support()
+    {
+        return view('support');
+    }
+
+    public function privacypolicy()
+    {
+        return view('privacy-policy');
+    }
+
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
 }

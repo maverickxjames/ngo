@@ -11,7 +11,7 @@
     <div class="w-full max-w-lg bg-white shadow-xl rounded-2xl p-8">
         <!-- Logo + Heading -->
         <div class="text-center mb-6">
-                      <img src="{{ asset('assets/img/logo-main.jpg') }}" alt="NGO Logo" class="h-20 mx-auto">
+                      <img src="{{ asset('assets/img/logo-main.png') }}" alt="NGO Logo" class="h-20 mx-auto">
 
             <h1 class="mt-4 text-2xl font-bold text-green-800">Join Our NGO</h1>
             <p class="text-sm text-gray-600">Register to become part of our community</p>

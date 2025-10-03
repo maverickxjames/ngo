@@ -32,6 +32,8 @@ class ReferralController extends Controller
         return $children->map(function ($child) {
             return [
                 'username' => $child->username,
+                'form_number' => $child->form_number,
+                'name'     => $child->name,
                 'status'   => $child->status,
                 'joined_at'=> $child->joined_at,
                 'children' => $this->buildTree($child),

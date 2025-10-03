@@ -35,7 +35,7 @@ Route::middleware('guest')->group(function () {
 
 // Authenticated user routes
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     // Bank details
     Route::get('bank', [DashboardController::class, 'editBankDetails'])->name('bank.edit');
@@ -43,6 +43,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Referral tree
     Route::get('referrals', [ReferralController::class, 'index'])->name('referrals.index');
     Route::get('team/tree', [ReferralController::class, 'tree'])->name('referrals.tree');
+
+    Route::get('payouts', [DashboardController::class, 'payouts'])->name('user.payouts');
+    Route::get('support', [DashboardController::class, 'support'])->name('user.support');
+    Route::get('privacy-policy', [DashboardController::class, 'privacypolicy'])->name('user.privacypolicy');
+
+    Route::get('terms', [DashboardController::class, 'terms'])->name('user.terms');
+    Route::get('about', [DashboardController::class, 'about'])->name('user.about');
+
+
+
 });
 
 // Admin routes

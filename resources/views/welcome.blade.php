@@ -79,7 +79,7 @@
                 <div class="ul-header-nav-wrapper">
                     <div class="to-go-to-sidebar-in-mobile">
                         <nav class="ul-header-nav">
-                            <div class="has-sub-menu">
+                            {{-- <div class="has-sub-menu">
                                 <a role="button">Home</a>
 
                                 <div class="ul-header-submenu">
@@ -140,8 +140,8 @@
                                         <li><a href="#0">Blog Details</a></li>
                                     </ul>
                                 </div>
-                            </div>
-                            <a href="#0">Contact</a>
+                            </div> --}}
+                            <a href="/login">Login</a>
                         </nav>
                     </div>
                 </div>
