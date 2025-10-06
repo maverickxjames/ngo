@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'district',
         'state',
         'phone',
-        'pan_number',
+        // 'pan_number',
     ];
 
     /**
@@ -99,4 +99,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Payout::class);
     }
+
+    public function referrer()
+{
+    return $this->belongsTo(User::class, 'referred_by');
+}
 }

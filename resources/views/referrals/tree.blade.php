@@ -1,17 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div x-data="{ query: '' }" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    
     <!-- Header -->
     <div class="bg-gradient-to-r from-green-600 to-orange-500 p-6 rounded-xl shadow-lg text-white mb-6">
         <h1 class="text-2xl font-bold">Referral Tree</h1>
         <p class="text-sm mt-1">Explore your team hierarchy. Click nodes to expand.</p>
     </div>
 
+    <!-- 🔍 Search -->
+    <div class="flex justify-center mb-6">
+        <input type="text" x-model="query"
+               placeholder="Search by name, username, or form number..."
+               class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-green-500 focus:outline-none"
+        >
+    </div>
+
     <!-- Tree -->
     <div class="bg-white p-6 rounded-lg shadow-md overflow-x-auto">
         @if(!empty($tree))
-            <ul class="tree text-sm">
+            <ul class="tree text-sm" x-data>
                 @foreach($tree as $node)
                     @include('layouts.referral-node-expandable', ['node' => $node])
                 @endforeach

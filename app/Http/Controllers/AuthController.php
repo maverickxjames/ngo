@@ -80,20 +80,30 @@ class AuthController extends Controller
     /**
      * Verify MPIN after password login.
      */
-    public function verifyMpin(Request $request)
-    {
-        $request->validate([
-            'mpin' => ['required', 'digits_between:4,6'],
-        ]);
+public function verifyMpin(Request $request)
+{
+    // Ensure we have an array of digits
+    $request->validate([
+        'mpin_digits' => 'required|array|size:4',
+        'mpin_digits.*' => 'required|digits:1',
+    ]);
 
-        $user = Auth::user();
-        if (!$user || !Hash::check($request->mpin, $user->mpin)) {
-            // implement rate limiting and lockout logic
-            return back()->withErrors(['mpin' => 'Invalid MPIN']);
-        }
-        // MPIN verified; redirect to dashboard
-        return redirect()->intended('/');
+    // Convert array like ["1","2","3","4"] → "1234"
+    $enteredMpin = implode('', $request->mpin_digits);
+
+    $user = Auth::user();
+
+    if (!$user || !Hash::check($enteredMpin, $user->mpin)) {
+        // Optional: you can implement rate limiting or lockout logic here
+        return back()->withErrors(['mpin' => 'Invalid MPIN entered.']);
     }
+
+            // ✅ Mark session as MPIN-verified
+        session(['mpin_verified' => true]);
+
+    // ✅ MPIN verified successfully
+    return redirect()->intended('/home')->with('status', 'MPIN verified successfully.');
+}
 
     /**
      * Show MPIN verification form.

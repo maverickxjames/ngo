@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+@php use Illuminate\Support\Str;
+
+@endphp
+
 <div class="bg-gray-100 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto space-y-10">
 
@@ -278,42 +282,85 @@
         </div>
 
         <!-- Direct Members Table -->
-        <div class="bg-white rounded-xl shadow p-6">
-            <h2 class="text-2xl font-semibold text-green-700 mb-4 flex items-center">
-                <span class="w-2 h-6 bg-green-600 rounded mr-2"></span> Direct Members
-            </h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm border-collapse">
-                    <thead class="bg-gray-50 text-gray-700 uppercase text-xs font-bold">
-                        <tr>
-                            <th class="px-4 py-3 text-left">Username</th>
-                            <th class="px-4 py-3">Status</th>
-                            <th class="px-4 py-3">Joined</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y">
-                        @forelse($directMembers as $member)
-                        <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3">{{ $member->username }}</td>
-                            <td class="px-4 py-3">
-                                <span class="px-2 py-1 rounded-full text-xs font-semibold
-                                    {{ $member->status === 'active'
-                                        ? 'bg-green-100 text-green-700'
-                                        : 'bg-red-100 text-red-700' }}">
-                                    {{ ucfirst($member->status) }}
-                                </span>
-                            </td>
-                            <td class="px-4 py-3">{{ $member->joined_at }}</td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="3" class="px-4 py-3 text-center text-gray-500">No members yet</td>
-                        </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="bg-white rounded-xl shadow p-6">
+    <h2 class="text-2xl font-semibold text-green-700 mb-4 flex items-center">
+        <span class="w-2 h-6 bg-green-600 rounded mr-2"></span> Direct Members
+    </h2>
+
+    <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse">
+            <thead class="bg-gray-50 text-gray-700 uppercase text-xs font-bold">
+                <tr>
+                    <th class="px-4 py-3 text-left">#</th>
+                    <th class="px-4 py-3 text-left">Form No.</th>
+                    <th class="px-4 py-3 text-left">Name</th>
+                    <th class="px-4 py-3 text-left">Username</th>
+                    <th class="px-4 py-3 text-left">Mobile</th>
+                    <th class="px-4 py-3 text-left">Referral Code</th>
+                    <th class="px-4 py-3 text-center">Status</th>
+                    <th class="px-4 py-3 text-center">Joined</th>
+                </tr>
+            </thead>
+
+            <tbody class="divide-y">
+                @php $i = 1; @endphp
+                @forelse($directMembers as $member)
+                    <tr class="hover:bg-gray-50 transition">
+                        <td class="px-4 py-3 font-medium text-gray-800">
+                            {{ $i++ }}
+                        </td>
+                        <td class="px-4 py-3 font-medium text-gray-800">
+                            {{ $member->form_number ?? 'N/A' }}
+                        </td>
+                        <td class="px-4 py-3 font-medium text-gray-800">
+                            {{ $member->name ?? 'N/A' }}
+                        </td>
+                        
+
+                        <td class="px-4 py-3 text-gray-700">
+                            {{ $member->username }}
+                        </td>
+
+                        <td class="px-4 py-3 text-gray-700">
+                            @if($member->phone)
+                                +91{{ Str::mask($member->phone, '*', 3, 5) }}
+                            @else
+                                N/A
+                            @endif
+                        </td>
+
+                        <td class="px-4 py-3 text-gray-700">
+                            <span class="px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-700 font-semibold">
+                                {{ $member->referral_code ?? '—' }}
+                            </span>
+                        </td>
+
+                        <td class="px-4 py-3 text-center">
+                            <span class="px-2 py-1 rounded-full text-xs font-semibold
+                                {{ $member->status === 'active'
+                                    ? 'bg-green-100 text-green-700'
+                                    : ($member->status === 'pending'
+                                        ? 'bg-yellow-100 text-yellow-700'
+                                        : 'bg-red-100 text-red-700') }}">
+                                {{ ucfirst($member->status) }}
+                            </span>
+                        </td>
+
+                        <td class="px-4 py-3 text-center text-gray-600">
+                            {{ $member->joined_at ? \Carbon\Carbon::parse($member->joined_at)->format('d M Y') : 'N/A' }}
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="px-4 py-3 text-center text-gray-500">
+                            No members yet
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
 
     </div>
 </div>

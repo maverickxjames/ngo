@@ -1,71 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-<div x-data="{ sidebarOpen: false }" class="min-h-screen bg-gray-900 text-gray-200 flex">
+<div class="min-h-screen bg-gray-900 text-gray-200 flex">
 
-    <!-- 🌙 Sidebar -->
-    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
-           class="fixed inset-y-0 left-0 w-64 bg-gradient-to-b from-gray-800 to-gray-900 shadow-lg transform transition-transform duration-300 ease-in-out sm:translate-x-0 z-50">
-
-        <!-- Logo -->
-        <div class="flex items-center space-x-2 px-6 py-5 border-b border-gray-700">
-            <img src="{{ asset('assets/img/logo-main.png') }}" alt="Logo" class="h-10 w-10 rounded-full">
-            <h1 class="text-lg font-bold text-white leading-tight">Admin Panel</h1>
-        </div>
-
-        <!-- Nav Links -->
-        <nav class="flex-1 px-4 py-6 space-y-2">
-            <a href="{{ route('admin.dashboard') }}"
-               class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-700 transition {{ request()->routeIs('admin.dashboard') ? 'bg-gray-700 text-green-400' : '' }}">
-                <i class="ri-dashboard-line mr-3 text-lg"></i> Dashboard
-            </a>
-
-            <a href="{{ route('admin.users') }}"
-               class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-700 transition {{ request()->routeIs('admin.users') ? 'bg-gray-700 text-green-400' : '' }}">
-                <i class="ri-user-3-line mr-3 text-lg"></i> Manage Users
-            </a>
-
-            <a href="{{ route('admin.payments') }}"
-               class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-700 transition {{ request()->routeIs('admin.payments') ? 'bg-gray-700 text-green-400' : '' }}">
-                <i class="ri-bank-card-line mr-3 text-lg"></i> Donations
-            </a>
-
-            <a href="{{ route('admin.payouts') }}"
-               class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-700 transition {{ request()->routeIs('admin.payouts') ? 'bg-gray-700 text-green-400' : '' }}">
-                <i class="ri-wallet-3-line mr-3 text-lg"></i> Payouts
-            </a>
-
-            <a href="#0"
-               class="flex items-center px-4 py-2 rounded-lg hover:bg-gray-700 transition {{ request()->routeIs('admin.settings') ? 'bg-gray-700 text-green-400' : '' }}">
-                <i class="ri-settings-3-line mr-3 text-lg"></i> Settings
-            </a>
-        </nav>
-
-        <!-- Logout -->
-        <div class="border-t border-gray-700 mt-auto px-4 py-4">
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit"
-                        class="flex items-center w-full px-4 py-2 rounded-lg text-red-400 hover:bg-red-800 hover:text-red-100 transition">
-                    <i class="ri-logout-box-line mr-3 text-lg"></i> Logout
-                </button>
-            </form>
-        </div>
-    </aside>
-
-    <!-- 🌗 Overlay (for mobile) -->
-    <div x-show="sidebarOpen" 
-         @click="sidebarOpen = false" 
-         class="fixed inset-0 bg-black bg-opacity-50 sm:hidden z-40"></div>
-
-    <!-- 📱 Toggle Button -->
-    <button @click="sidebarOpen = !sidebarOpen"
-            class="sm:hidden fixed top-4 left-4 bg-green-600 text-white p-2 rounded-md z-50 focus:outline-none">
-        <i class="ri-menu-2-line text-xl"></i>
-    </button>
+    @include('admin.sidebar')
 
     <!-- 🌟 Main Content -->
-    <main class="flex-1 sm:ml-64 p-8 bg-gray-900 text-gray-100 min-h-screen">
+    <main class="flex-1 p-8 bg-gray-900 text-gray-100 min-h-screen">
 
         <!-- Header -->
         <div class="flex justify-between items-center mb-8">

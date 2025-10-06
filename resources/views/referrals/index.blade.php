@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@php use Illuminate\Support\Str; @endphp
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
 <!-- Referral Link + Actions -->
@@ -138,38 +139,83 @@ function showCopyMessage() {
         <div class="px-6 py-4 border-b bg-gray-100">
             <h2 class="text-lg font-bold text-gray-700">Direct Referrals</h2>
         </div>
-        <div class="overflow-x-auto">
-            <table class="min-w-full text-sm text-left text-gray-700">
-                <thead class="bg-gray-100 text-gray-800 uppercase text-xs font-semibold">
-                    <tr>
-                        <th class="px-6 py-3">Form No</th>
-                        <th class="px-6 py-3">Status</th>
-                        <th class="px-6 py-3">Joined Date</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    @forelse($directMembers as $member)
-                    <tr class="hover:bg-gray-50 transition">
-                        <td class="px-6 py-4 font-medium text-gray-900">{{ $member->form_number }}</td>
-                        <td class="px-6 py-4">
-                            <span class="px-3 py-1 text-xs font-semibold rounded-full 
-                                {{ $member->status === 'active' ? 'bg-green-100 text-green-700' : 
-                                   ($member->status === 'pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700') }}">
-                                {{ ucfirst($member->status) }}
-                            </span>
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ \Carbon\Carbon::parse($member->joined_at)->format('d M, Y') }}
-                        </td>
-                    </tr>
-                    @empty
-                    <tr>
-                        <td colspan="3" class="px-6 py-4 text-center text-gray-500">No referrals found.</td>
-                    </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+<div class="overflow-x-auto bg-white rounded-xl shadow-md border border-gray-100">
+    <table class="min-w-full text-sm text-left text-gray-700">
+        <thead class="bg-gray-100 text-gray-800 uppercase text-xs font-semibold">
+            <tr>
+                <th class="px-6 py-3">#</th>
+                <th class="px-6 py-3">Form No</th>
+                <th class="px-6 py-3">Name</th>
+                <th class="px-6 py-3">Username</th>
+                <th class="px-6 py-3">Mobile</th>
+                <th class="px-6 py-3">Referral Code</th>
+                <th class="px-6 py-3">Status</th>
+                <th class="px-6 py-3">Joined Date</th>
+            </tr>
+        </thead>
+
+        <tbody class="divide-y divide-gray-200">
+            @forelse($directMembers as $index => $member)
+            <tr class="hover:bg-gray-50 transition">
+                <!-- Count -->
+                <td class="px-6 py-4 text-gray-500 font-medium">{{ $index + 1 }}</td>
+
+                <!-- Form Number -->
+                <td class="px-6 py-4 font-medium text-gray-900">
+                    {{ $member->form_number ?? '—' }}
+                </td>
+
+                <!-- Name -->
+                <td class="px-6 py-4">
+                    {{ $member->name ?? 'N/A' }}
+                </td>
+
+                <!-- Username -->
+                <td class="px-6 py-4 text-gray-800">
+                    {{ $member->username }}
+                </td>
+
+                <!-- Encrypted Mobile -->
+                <td class="px-6 py-4 text-gray-700">
+                    @if($member->phone)
+                        {{ Str::mask($member->phone, '*', 3, 5) }}
+                    @else
+                        N/A
+                    @endif
+                </td>
+
+                <!-- Referral Code -->
+                <td class="px-6 py-4">
+                    <span class="px-2 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold">
+                        {{ $member->referral_code ?? '—' }}
+                    </span>
+                </td>
+
+                <!-- Status -->
+                <td class="px-6 py-4">
+                    <span class="px-3 py-1 text-xs font-semibold rounded-full 
+                        {{ $member->status === 'active' ? 'bg-green-100 text-green-700' : 
+                           ($member->status === 'pending' ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700') }}">
+                        {{ ucfirst($member->status) }}
+                    </span>
+                </td>
+
+                <!-- Joined Date -->
+                <td class="px-6 py-4 text-gray-600">
+                    {{ $member->joined_at ? \Carbon\Carbon::parse($member->joined_at)->format('d M, Y') : '—' }}
+                </td>
+            </tr>
+
+            @empty
+            <tr>
+                <td colspan="8" class="px-6 py-4 text-center text-gray-500">
+                    No referrals found.
+                </td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
     </div>
 </div>
 

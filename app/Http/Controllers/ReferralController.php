@@ -33,9 +33,10 @@ class ReferralController extends Controller
             return [
                 'username' => $child->username,
                 'form_number' => $child->form_number,
+                'phone' => $child->phone,
                 'name'     => $child->name,
                 'status'   => $child->status,
-                'joined_at'=> $child->joined_at,
+                'created_at'=> $child->created_at,
                 'children' => $this->buildTree($child),
             ];
         });

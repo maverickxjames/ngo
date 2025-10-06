@@ -22,7 +22,9 @@ class AdminController extends Controller
 
     public function users()
     {
+        
         $users = User::paginate(20);
+        $users->load('referrer');
         return view('admin.users', compact('users'));
     }
 
@@ -72,4 +74,88 @@ class AdminController extends Controller
         ]);
         return back()->with('status', 'Payout processed');
     }
+
+    public function Usershow(User $user)
+    {
+        $user->load('referrer');
+        $user->bank_details = is_string($user->bank_details)
+            ? json_decode($user->bank_details, true)
+            : $user->bank_details;
+
+        return view('admin.user_show', compact('user'));
+    }
+
+    public function updateMpin(Request $request, User $user)
+    {
+        try {
+            $validated = $request->validate([
+                'mpin' => ['required', 'digits:4'],
+            ]);
+
+            $user->mpin = bcrypt($validated['mpin']);
+            $user->save();
+
+            return back()->with('status', 'MPIN updated successfully.')->with('status_type', 'success');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return back()
+                ->withErrors($e->validator)
+                ->with('status', $e->validator->errors()->first())
+                ->with('status_type', 'error');
+        } catch (\Exception $e) {
+            return back()->with('status', 'Something went wrong.')->with('status_type', 'error');
+        }
+    }
+
+    public function updatePersonal(Request $request, User $user)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'guardian_name' => 'nullable|string|max:255',
+            'dob' => 'nullable|date',
+            'gender' => 'nullable|string',
+            'education' => 'nullable|string|max:255',
+        ]);
+
+        $user->update($data);
+
+        return back()->with('status', 'Personal information updated successfully.')->with('status_type', 'success');
+    }
+
+    public function updateContact(Request $request, User $user)
+    {
+        $data = $request->validate([
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'required|numeric|min:10',
+            'address' => 'nullable|string|max:500',
+            'tehsil' => 'nullable|string|max:255',
+            'district' => 'nullable|string|max:255',
+            'state' => 'nullable|string|max:255',
+        ]);
+
+        $user->update($data);
+
+        return back()->with('status', 'Contact information updated successfully.')->with('status_type', 'success');
+    }
+
+public function updateBank(Request $request, User $user)
+{
+    $data = $request->validate([
+        'bank_name' => 'required|string|max:255',
+        'account_number' => 'required|string|max:50',
+        'ifsc' => 'required|string|max:20',
+        'account_holder' => 'required|string|max:255',
+        'branch' => 'nullable|string|max:255',
+        'branch_address' => 'nullable|string|max:255',
+        'pan_number' => 'nullable|string|max:20',
+    ]);
+
+    // Ensure consistency
+    $user->bank_details = json_encode($data);
+    $user->save();
+
+    return back()
+        ->with('status', 'Bank details updated successfully.')
+        ->with('status_type', 'success');
+}
+
 }

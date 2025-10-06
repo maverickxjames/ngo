@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
             $middleware->alias([
         'role' => \App\Http\Middleware\RoleMiddleware::class,
+        'verify.mpin' => \App\Http\Middleware\VerifyMpin::class,
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

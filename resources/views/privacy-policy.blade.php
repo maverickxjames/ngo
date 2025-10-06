@@ -5,97 +5,118 @@
 
     <!-- Header -->
     <div class="bg-gradient-to-r from-green-600 to-orange-500 p-6 rounded-xl shadow-lg text-white">
-        <h1 class="text-3xl font-bold">Privacy Policy</h1>
-        <p class="mt-2 text-sm">अक्षरदान सोशल सेवा फाउंडेशन (Akshardan Social Seva Foundation)</p>
+        <h1 class="text-3xl font-bold">गोपनीयता नीति (Privacy Policy)</h1>
+        <p class="mt-2 text-sm">अक्षरदान सेवा सोशल फाउंडेशन (Akshardan Seva Social Foundation)</p>
     </div>
 
     <!-- Intro -->
     <div class="bg-white p-6 rounded-xl shadow-md space-y-4">
         <p class="text-gray-700 leading-relaxed">
-            We at <span class="font-semibold text-green-700">अक्षरदान सोशल सेवा फाउंडेशन</span> are committed to protecting 
-            your privacy. This Privacy Policy explains how we collect, use, and safeguard your personal information 
-            when you interact with our website, services, and programs.
+            <span class="font-semibold text-green-700">अक्षरदान सेवा सोशल फाउंडेशन</span> में हम आपकी व्यक्तिगत जानकारी की सुरक्षा और गोपनीयता को अत्यधिक महत्व देते हैं। 
+            यह गोपनीयता नीति बताती है कि हम आपकी जानकारी कैसे एकत्रित करते हैं, उसका उपयोग कैसे करते हैं, और उसे सुरक्षित रखने के लिए कौन-कौन से उपाय अपनाते हैं। 
+            हमारी वेबसाइट या सेवाओं का उपयोग करने का अर्थ है कि आप इस नीति से सहमत हैं।
         </p>
     </div>
 
     <!-- Sections -->
-    <div class="bg-white p-6 rounded-xl shadow-md space-y-6">
-        
+    <div class="bg-white p-6 rounded-xl shadow-md space-y-6 leading-relaxed">
+
+        <!-- 1 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">1. Information We Collect</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">1. हम कौन-सी जानकारी एकत्र करते हैं</h2>
+            <p class="text-gray-700 mb-2">हम आपके द्वारा प्रदान की गई और स्वतः एकत्र की गई जानकारी को सुरक्षित रूप से संग्रहित करते हैं:</p>
             <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li>Personal details such as name, email, phone number, and address when you register or donate.</li>
-                <li>Bank or payment details when making contributions.</li>
-                <li>Technical data like IP address, browser, and device type for security and analytics.</li>
+                <li>व्यक्तिगत जानकारी – नाम, ईमेल, फ़ोन नंबर, पता, जन्मतिथि आदि जो आप पंजीकरण या दान करते समय देते हैं।</li>
+                <li>वित्तीय विवरण – बैंक खाता, भुगतान आईडी या ट्रांजेक्शन विवरण जो दान प्रक्रिया के दौरान आवश्यक होते हैं।</li>
+                <li>तकनीकी जानकारी – आपके डिवाइस का प्रकार, ब्राउज़र, IP पता और उपयोग का समय, ताकि वेबसाइट की सुरक्षा और प्रदर्शन में सुधार किया जा सके।</li>
             </ul>
         </div>
 
+        <!-- 2 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">2. How We Use Your Information</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">2. जानकारी का उपयोग कैसे किया जाता है</h2>
+            <p class="text-gray-700 mb-2">
+                एकत्र की गई जानकारी का उपयोग केवल सामाजिक, तकनीकी और प्रशासनिक उद्देश्यों के लिए किया जाता है। 
+                हम आपकी जानकारी का उपयोग निम्नलिखित उद्देश्यों के लिए करते हैं:
+            </p>
             <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li>To process donations and provide receipts.</li>
-                <li>To communicate updates about our NGO programs and activities.</li>
-                <li>To comply with legal and financial obligations.</li>
+                <li>दान प्रक्रिया पूरी करने और प्रमाणपत्र या रसीद प्रदान करने के लिए।</li>
+                <li>आपको संस्था की गतिविधियों, अभियानों और सामाजिक कार्यक्रमों के बारे में सूचित करने के लिए।</li>
+                <li>कानूनी या लेखा संबंधी अनुपालन सुनिश्चित करने के लिए।</li>
+                <li>वेबसाइट और सेवाओं की गुणवत्ता में सुधार करने और उपयोगकर्ता अनुभव को बेहतर बनाने के लिए।</li>
             </ul>
         </div>
 
+        <!-- 3 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">3. Data Security</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">3. डेटा सुरक्षा</h2>
             <p class="text-gray-700">
-                We use appropriate security measures to protect your personal data against unauthorized access, 
-                alteration, disclosure, or destruction. However, no online transmission is completely secure.
+                हम आपकी व्यक्तिगत जानकारी की सुरक्षा के लिए सभी उचित तकनीकी और प्रशासनिक उपाय अपनाते हैं। 
+                हमारे सर्वर, डेटाबेस और भुगतान प्रणालियाँ उच्च स्तरीय एन्क्रिप्शन और फ़ायरवॉल सुरक्षा से संरक्षित हैं। 
+                हालांकि, इंटरनेट के माध्यम से डेटा का कोई भी ट्रांसमिशन 100% सुरक्षित नहीं हो सकता, इसलिए हम उपयोगकर्ताओं से भी सतर्क रहने का अनुरोध करते हैं।
             </p>
         </div>
 
+        <!-- 4 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">4. Sharing of Information</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">4. जानकारी का साझा करना</h2>
             <p class="text-gray-700">
-                We do not sell, trade, or rent your personal data. Information may be shared with trusted partners 
-                (such as payment gateways) only to the extent necessary to process your contributions.
+                हम आपकी जानकारी को किसी तीसरे पक्ष के साथ बेचते, किराये पर देते या व्यापारिक रूप से उपयोग नहीं करते। 
+                आपकी जानकारी केवल आवश्यक स्थिति में भरोसेमंद सेवा प्रदाताओं (जैसे भुगतान गेटवे, सर्वर होस्टिंग आदि) के साथ साझा की जा सकती है, 
+                और वह भी केवल सेवा को पूरा करने के उद्देश्य से। 
+                सभी तृतीय-पक्ष भागीदार हमारे गोपनीयता मानकों का पालन करने के लिए बाध्य हैं।
             </p>
         </div>
 
+        <!-- 5 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">5. Your Rights</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">5. उपयोगकर्ता के अधिकार</h2>
+            <p class="text-gray-700 mb-2">आपको अपनी व्यक्तिगत जानकारी से संबंधित निम्नलिखित अधिकार प्राप्त हैं:</p>
             <ul class="list-disc list-inside text-gray-700 space-y-1">
-                <li>Access and update your personal information.</li>
-                <li>Request deletion of your personal data (as per legal limits).</li>
-                <li>Opt-out of promotional communications at any time.</li>
+                <li>आप अपनी व्यक्तिगत जानकारी को देखने, अपडेट करने या सुधारने का अनुरोध कर सकते हैं।</li>
+                <li>आप कानूनी सीमा के भीतर अपनी जानकारी को हटाने (delete) का अनुरोध कर सकते हैं।</li>
+                <li>आप संस्था से आने वाले प्रचार या सूचना ईमेल से सदस्यता समाप्त (unsubscribe) कर सकते हैं।</li>
             </ul>
         </div>
 
+        <!-- 6 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">6. Cookies</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">6. कुकीज़ का उपयोग</h2>
             <p class="text-gray-700">
-                Our website may use cookies to improve user experience. You can control cookies through your 
-                browser settings.
+                हमारी वेबसाइट उपयोगकर्ता अनुभव को बेहतर बनाने के लिए "कुकीज़" का उपयोग कर सकती है। 
+                कुकीज़ आपके ब्राउज़र में छोटी फाइलें होती हैं जो आपकी पसंद और गतिविधियों को याद रखती हैं। 
+                आप अपने ब्राउज़र की सेटिंग में जाकर कुकीज़ को नियंत्रित या अक्षम कर सकते हैं।
             </p>
         </div>
 
+        <!-- 7 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">7. Changes to this Policy</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">7. इस नीति में बदलाव</h2>
             <p class="text-gray-700">
-                We may update this Privacy Policy from time to time. Changes will be posted on this page with 
-                a revised date.
+                संस्था समय-समय पर इस गोपनीयता नीति में आवश्यक संशोधन कर सकती है। 
+                सभी बदलाव इस पेज पर अपडेट किए जाएंगे, और संशोधित तिथि नीचे दी जाएगी। 
+                हम आपको सलाह देते हैं कि आप समय-समय पर इस नीति को दोबारा पढ़ें ताकि किसी भी परिवर्तन से अवगत रह सकें।
             </p>
         </div>
 
+        <!-- 8 -->
         <div>
-            <h2 class="text-xl font-bold text-green-700 mb-2">8. Contact Us</h2>
+            <h2 class="text-xl font-bold text-green-700 mb-2">8. हमसे संपर्क करें</h2>
             <p class="text-gray-700">
-                If you have any questions about this Privacy Policy, please contact us:
+                यदि आपको इस गोपनीयता नीति से संबंधित कोई प्रश्न, सुझाव या चिंता हो, 
+                तो कृपया नीचे दिए गए माध्यमों से हमसे संपर्क करें:
             </p>
-            <ul class="list-none text-gray-700 mt-2">
-                <li><span class="font-semibold">Phone:</span> +91 98936 50250</li>
-                <li><span class="font-semibold">Email:</span> support@akshardan.org</li>
-                <li><span class="font-semibold">Address:</span> Ujjain, Madhya Pradesh, India</li>
+            <ul class="list-none text-gray-700 mt-2 space-y-1">
+                <li><span class="font-semibold">फ़ोन:</span> +91 98936 50250</li>
+                <li><span class="font-semibold">ईमेल:</span> support@akshardan.org</li>
+                <li><span class="font-semibold">पता:</span> उज्जैन, मध्य प्रदेश, भारत</li>
             </ul>
         </div>
     </div>
 
     <!-- Footer -->
     <div class="text-sm text-gray-500 text-center">
-        Last updated: {{ now()->format('d M, Y') }}
+        Last Updated : {{ now()->format('d M, Y') }}
     </div>
 </div>
 @endsection

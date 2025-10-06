@@ -32,10 +32,12 @@ Route::middleware('guest')->group(function () {
     // Route::get('mpin', [AuthController::class, 'showMpinForm'])->name('mpin.verify.form');
     // Activation payment callback
     Route::post('payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
+
+
 });
 
 // Authenticated user routes
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified','verify.mpin'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('dashboard');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
     // Bank details
@@ -52,8 +54,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('terms', [DashboardController::class, 'terms'])->name('user.terms');
     Route::get('about', [DashboardController::class, 'about'])->name('user.about');
 
-        Route::post('mpin', [AuthController::class, 'verifyMpin'])->name('mpin.verify');
+                Route::post('mpin', [AuthController::class, 'verifyMpin'])->name('mpin.verify');
     Route::get('mpin', [AuthController::class, 'showMpinForm'])->name('mpin.verify.form');
+
+
 
 
 
@@ -68,6 +72,18 @@ Route::middleware(['auth', 'role:Super Admin|Finance Admin|Support Admin'])->pre
     Route::get('earnings', [AdminController::class, 'earnings'])->name('earnings');
     Route::get('payouts', [AdminController::class, 'payouts'])->name('payouts');
     Route::post('payouts/{user}/pay', [AdminController::class, 'payOut'])->name('payouts.pay');
+
+    Route::get('users/{user}', [AdminController::class, 'Usershow'])->name('users.show');
+
+    Route::post('/users/{user}/update-mpin', [AdminController::class, 'updateMpin'])
+    ->name('users.updateMpin');
+
+    Route::put('users/{user}/update-personal', [AdminController::class, 'updatePersonal'])->name('users.updatePersonal');
+Route::put('users/{user}/update-contact', [AdminController::class, 'updateContact'])->name('users.updateContact');
+Route::put('users/{user}/update-bank', [AdminController::class, 'updateBank'])->name('users.updateBank');
+
+
+
 });
 
 require __DIR__.'/auth.php';
