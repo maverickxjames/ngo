@@ -54,6 +54,7 @@
                     class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl font-bold">✕</button>
 
             <h2 class="text-xl font-bold text-green-700 mb-4">Update Bank Details</h2>
+            
 
             <form method="POST" action="{{ route('bank.update') }}" class="space-y-5">
                 @csrf
