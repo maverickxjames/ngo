@@ -16,7 +16,8 @@ class AdminController extends Controller
         $activeUsers = User::where('status', 'active')->count();
         $pendingUsers = User::where('status', 'pending')->count();
         $totalDonations = Payment::where('status', 'success')->sum('amount');
-        return view('admin.dashboard', compact('userCount', 'activeUsers', 'pendingUsers', 'totalDonations'));
+        $recentUsers = User::latest()->take(5)->get();
+        return view('admin.dashboard', compact('userCount', 'activeUsers', 'pendingUsers', 'totalDonations', 'recentUsers'));
     }
 
     public function users()

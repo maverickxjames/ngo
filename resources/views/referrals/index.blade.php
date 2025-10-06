@@ -11,7 +11,7 @@
         <input id="referralLink" 
                type="text" 
                readonly 
-               value="{{ url('/register?ref=' . Auth::user()->form_number) }}" 
+               value="{{ url('/register/' . Auth::user()->referral_code) }}" 
                class="w-full px-4 py-2 border rounded-lg text-sm text-gray-700 focus:ring focus:ring-green-300">
 
         <!-- Buttons -->
@@ -24,7 +24,7 @@
 
             <!-- WhatsApp Share -->
             <a id="whatsappShare"
-               href="https://wa.me/?text=Join%20me%20here:%20{{ urlencode(url('/register?ref=' . Auth::user()->form_number)) }}"
+               href="https://wa.me/?text=Join%20me%20here:%20{{ urlencode(url('/register/' . Auth::user()->referral_code)) }}"
                target="_blank"
                class="flex items-center gap-1 px-3 py-2 bg-[#25D366] text-white rounded-md shadow hover:bg-green-500 text-xs">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-4 h-4">
@@ -50,7 +50,7 @@
     <div class="bg-white p-6 rounded-lg shadow-lg relative max-w-xs w-full text-center">
         <h3 class="text-lg font-semibold text-gray-800 mb-4">Referral QR Code</h3>
         <img id="qrCodeImg" class="mx-auto"
-             src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ urlencode(url('/register?ref=' . Auth::user()->form_number)) }}"
+             src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={{ urlencode(url('/register/' . Auth::user()->referral_code)) }}"
              alt="Referral QR Code">
         <button onclick="closeQrModal()" 
                 class="mt-4 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 text-sm">

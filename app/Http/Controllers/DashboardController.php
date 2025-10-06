@@ -44,6 +44,10 @@ class DashboardController extends Controller
             'account_number' => 'required|string',
             'ifsc'          => 'required|string',
             'account_holder'=> 'required|string',
+            'branch_address'=> 'nullable|string',
+            'bank_name'     => 'nullable|string',
+            'branch'        => 'nullable|string',
+            'pan_number'          => 'nullable|string',
         ]);
         $user = Auth::user();
         $user->update([
@@ -51,6 +55,10 @@ class DashboardController extends Controller
                 'account_number' => $request->account_number,
                 'ifsc'           => $request->ifsc,
                 'account_holder' => $request->account_holder,
+                'branch_address' => $request->branch_address ?? '',
+                'bank_name'      => $request->bank_name ?? '',
+                'branch'        => $request->branch ?? '',
+                'pan_number'           => $request->pan_number ?? '',
             ],
         ]);
         return back()->with('status', 'Bank details updated');

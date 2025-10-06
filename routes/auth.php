@@ -10,12 +10,14 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+Route::get('/register', [RegisterController::class, 'referCodePage'])->name('register.referral');
+Route::post('/register', [RegisterController::class, 'checkReferral']);
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+Route::get('/register/{referral}', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('/register/{referral}', [RegisterController::class, 'store'])->name('register.store');
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');

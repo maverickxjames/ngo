@@ -31,6 +31,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'activation_payment_id',
         'joined_at',
         'bank_details',
+        'guardian_name',
+        'dob',
+        'gender',
+        'education',
+        'address',
+        'tehsil',
+        'district',
+        'state',
+        'phone',
+        'pan_number',
     ];
 
     /**

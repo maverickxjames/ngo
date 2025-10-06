@@ -3,7 +3,7 @@
         <div class="flex justify-between h-16">
 
             <!-- Left: Logo + Links -->
-            <div class="flex items-center space-x-6">
+            <div class="flex items-center space-x-6" style="margin:auto">
                 <!-- Logo -->
                 <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
                     <img src="{{ asset('assets/img/logo-main.png') }}" alt="NGO Logo" class="h-10">
@@ -57,53 +57,92 @@
             </div>
 
             <!-- Mobile Hamburger -->
-            <div class="flex items-center sm:hidden">
-                <button @click="open = !open"
-                        class="p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{ 'hidden': open, 'inline-flex': !open }" 
-                              class="inline-flex" 
-                              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                              d="M4 6h16M4 12h16M4 18h16"/>
-                        <path :class="{ 'hidden': !open, 'inline-flex': open }" 
-                              class="hidden" 
-                              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                              d="M6 18L18 6M6 6l12 12"/>
-                    </svg>
+<!-- 🌿 Mobile Sidebar Navigation (Only for Mobile) -->
+<div x-data="{ openSidebar: false }" class="sm:hidden">
+    <!-- Hamburger Button (Already Exists in your Nav, ensure this toggles openSidebar) -->
+    <button @click="openSidebar = true"
+            class="fixed top-3 left-3 bg-green-600 text-white p-2 rounded-md shadow-md z-50 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <!-- Overlay -->
+    <div x-show="openSidebar" x-transition.opacity 
+         @click="openSidebar = false"
+         class="fixed inset-0 bg-black bg-opacity-40 z-40"></div>
+
+    <!-- Sidebar -->
+    <aside x-show="openSidebar" x-transition:enter="transition ease-out duration-300"
+           x-transition:enter-start="translate-x-[-100%]" 
+           x-transition:enter-end="translate-x-0"
+           x-transition:leave="transition ease-in duration-200"
+           x-transition:leave-start="translate-x-0"
+           x-transition:leave-end="translate-x-[-100%]"
+           class="fixed top-0 left-0 w-72 h-full bg-white shadow-2xl z-50 rounded-r-2xl overflow-y-auto">
+
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-green-600 to-orange-500 text-white flex items-center justify-between px-5 py-4 rounded-tr-2xl">
+            <div class="flex items-center space-x-2">
+                <img src="{{ asset('assets/img/logo-main.png') }}" class="h-10 w-10 rounded-full shadow-md">
+                <div>
+                    <h2 class="font-bold text-lg leading-tight">अक्षरदान सेवा</h2>
+                    <p class="text-xs text-orange-100">सोशल फाउंडेशन</p>
+                </div>
+            </div>
+            <button @click="openSidebar = false" class="text-white hover:text-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Links -->
+        <div class="px-4 py-6 space-y-2 text-gray-800 font-medium">
+            <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-dashboard-line mr-3 text-lg text-green-600"></i> Dashboard
+            </a>
+            <a href="{{ route('referrals.index') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-user-add-line mr-3 text-lg text-green-600"></i> Direct Members
+            </a>
+            <a href="{{ route('referrals.tree') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-team-line mr-3 text-lg text-green-600"></i> Team Tree
+            </a>
+            <a href="{{ route('user.payouts') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-wallet-3-line mr-3 text-lg text-green-600"></i> Payout
+            </a>
+            <a href="{{ route('bank.edit') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-bank-line mr-3 text-lg text-green-600"></i> Bank
+            </a>
+            <a href="{{ route('user.support') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-customer-service-2-line mr-3 text-lg text-green-600"></i> Support
+            </a>
+            <a href="{{ route('user.privacypolicy') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-lock-2-line mr-3 text-lg text-green-600"></i> Privacy Policy
+            </a>
+            <a href="{{ route('user.terms') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-file-text-line mr-3 text-lg text-green-600"></i> Terms & Conditions
+            </a>
+            <a href="{{ route('user.about') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                <i class="ri-information-line mr-3 text-lg text-green-600"></i> About Us
+            </a>
+
+            <!-- Logout -->
+            <form method="POST" action="{{ route('logout') }}" class="mt-4 border-t pt-4">
+                @csrf
+                <button type="submit" 
+                        class="flex items-center w-full px-4 py-2 rounded-lg text-red-600 hover:bg-red-50 hover:text-red-700">
+                    <i class="ri-logout-box-line mr-3 text-lg"></i> Logout
                 </button>
-            </div>
+            </form>
+        </div>
+    </aside>
+</div>
+
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div :class="{ 'block': open, 'hidden': !open }" class="sm:hidden hidden border-t border-green-500 bg-white shadow-lg">
-        <div class="px-4 pt-4 pb-3 space-y-2 text-gray-800">
-            <a href="{{ route('dashboard') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Dashboard</a>
-            <a href="{{ route('referrals.index') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Direct Members</a>
-            <a href="{{ route('referrals.tree') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Team Member</a>
-            <a href="{{ route('user.payouts') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Payout</a>
-            <a href="{{ route('bank.edit') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Bank</a>
-            <a href="{{ route('user.support') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Support</a>
-            <a href="{{ route('user.privacypolicy') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Privacy Policy</a>
-            <a href="{{ route('user.terms') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Terms & Conditions</a>
-            <a href="{{ route('user.about') }}" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">About Us</a>
-            {{-- <a href="#" class="block px-2 py-2 rounded hover:bg-green-50 hover:text-green-700">Share</a> --}}
-        </div>
 
-        <!-- Mobile Profile -->
-        <div class="border-t border-gray-200 px-4 py-3">
-            <div class="text-base font-medium">{{ Auth::user()->name }}</div>
-            <div class="text-sm text-gray-600">{{ Auth::user()->email }}</div>
-            <div class="mt-3">
-                <a href="{{ route('profile.edit') }}" class="block px-2 py-2 text-sm hover:bg-green-50 hover:text-green-700">Profile</a>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit"
-                            class="w-full text-left px-2 py-2 text-sm hover:bg-red-50 hover:text-red-600">
-                        Log Out
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
 </nav>

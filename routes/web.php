@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\AdminController;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -27,8 +28,8 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [AuthController::class, 'register'])->name('register');
     Route::get('login', [AuthController::class, 'showLoginForm'])->name('login.form');
     Route::post('login', [AuthController::class, 'login'])->name('login');
-    Route::post('mpin', [AuthController::class, 'verifyMpin'])->name('mpin.verify');
-    Route::get('mpin', [AuthController::class, 'showMpinForm'])->name('mpin.verify.form');
+    // Route::post('mpin', [AuthController::class, 'verifyMpin'])->name('mpin.verify');
+    // Route::get('mpin', [AuthController::class, 'showMpinForm'])->name('mpin.verify.form');
     // Activation payment callback
     Route::post('payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
 });
@@ -50,6 +51,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('terms', [DashboardController::class, 'terms'])->name('user.terms');
     Route::get('about', [DashboardController::class, 'about'])->name('user.about');
+
+        Route::post('mpin', [AuthController::class, 'verifyMpin'])->name('mpin.verify');
+    Route::get('mpin', [AuthController::class, 'showMpinForm'])->name('mpin.verify.form');
 
 
 
