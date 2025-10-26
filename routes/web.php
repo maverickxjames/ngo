@@ -9,6 +9,43 @@ use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WebsiteController;
 
+use Spatie\Sitemap\Sitemap;
+use Spatie\Sitemap\Tags\Url;
+use Illuminate\Support\Facades\Response;
+
+Route::get('/sitemap.xml', function () {
+    $sitemap = Sitemap::create();
+
+    // Public pages
+$sitemap
+    ->add(Url::create('/')
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+        ->setPriority(1.0))
+    ->add(Url::create('/about-us')
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(0.8))
+    ->add(Url::create('/contact-us')
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+        ->setPriority(0.8))
+    ->add(Url::create('/login')
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+        ->setPriority(0.3))
+    ->add(Url::create('/register')
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+        ->setPriority(0.3))
+    ->add(Url::create('/terms')
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+        ->setPriority(0.5))
+    ->add(Url::create('/privacy-policy')
+        ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+        ->setPriority(0.5));
+
+
+    return Response::make($sitemap->render(), 200, [
+        'Content-Type' => 'application/xml'
+    ]);
+});
+
 
 
 Route::get('/', function () {
