@@ -1,0 +1,93 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class DashboardController extends Controller
+{
+    public function index()
+    {
+        $user = Auth::user();
+        // gather earnings summary and referrals
+        $directIncome = $user->earnings()->where('type', 'direct')->sum('amount');
+        $teamIncome   = $user->earnings()->where('type', 'team')->sum('amount');
+        $payments     = $user->payments;
+        $payouts      = $user->payouts;
+        $directMembers = $user->children()->with('children')->get();
+        $totalDonation = $payments->sum('amount');
+        $userStatus = $user->status;
+
+
+        return view('dashboard.index', compact(
+            'user',
+            'directIncome',
+            'teamIncome',
+            'payments',
+            'payouts',
+            'directMembers',
+            'totalDonation',
+            'userStatus'
+        ));
+    }
+
+    public function editBankDetails()
+    {
+        $user = Auth::user();
+        return view('dashboard.bank', compact('user'));
+    }
+
+    public function updateBankDetails(Request $request)
+    {
+        $request->validate([
+            'account_number' => 'required|string',
+            'ifsc'          => 'required|string',
+            'account_holder'=> 'required|string',
+            'branch_address'=> 'nullable|string',
+            'bank_name'     => 'nullable|string',
+            'branch'        => 'nullable|string',
+            'pan_number'          => 'nullable|string',
+        ]);
+        $user = Auth::user();
+        $user->update([
+            'bank_details' => [
+                'account_number' => $request->account_number,
+                'ifsc'           => $request->ifsc,
+                'account_holder' => $request->account_holder,
+                'branch_address' => $request->branch_address ?? '',
+                'bank_name'      => $request->bank_name ?? '',
+                'branch'        => $request->branch ?? '',
+                'pan_number'           => $request->pan_number ?? '',
+            ],
+        ]);
+        return back()->with('status', 'Bank details updated');
+    }
+
+    public function payouts()
+    {
+        $user = Auth::user();
+        $payouts = $user->payouts()->orderBy('created_at', 'desc')->get();
+        return view('payouts.index', compact('payouts'));
+    }
+
+    public function support()
+    {
+        return view('support');
+    }
+
+    public function privacypolicy()
+    {
+        return view('privacy-policy');
+    }
+
+    public function terms()
+    {
+        return view('terms');
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
+}
