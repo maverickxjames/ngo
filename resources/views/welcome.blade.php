@@ -705,7 +705,7 @@
                     <div class="col">
                         <div class="ul-team-member">
                             <div class="ul-team-member-img">
-                                <img src="assets/img/member-2.jpg" alt="Team Member Image">
+                                <img src="assets/img/member-1.jpg" alt="Team Member Image">
                                 <div class="ul-team-member-socials">
                                     <a href="#0"><i class="flaticon-facebook"></i></a>
                                     <a href="#0"><i class="flaticon-twitter"></i></a>
@@ -724,7 +724,7 @@
                     <div class="col">
                         <div class="ul-team-member">
                             <div class="ul-team-member-img">
-                                <img src="assets/img/member-2.jpg" alt="Team Member Image">
+                                <img src="assets/img/member-4.jpg" alt="Team Member Image">
                                 <div class="ul-team-member-socials">
                                     <a href="#0"><i class="flaticon-facebook"></i></a>
                                     <a href="#0"><i class="flaticon-twitter"></i></a>
@@ -743,7 +743,7 @@
                     <div class="col">
                         <div class="ul-team-member">
                             <div class="ul-team-member-img">
-                                <img src="assets/img/member-2.jpg" alt="Team Member Image">
+                                <img src="assets/img/member-3.jpg" alt="Team Member Image">
                                 <div class="ul-team-member-socials">
                                     <a href="#0"><i class="flaticon-facebook"></i></a>
                                     <a href="#0"><i class="flaticon-twitter"></i></a>
