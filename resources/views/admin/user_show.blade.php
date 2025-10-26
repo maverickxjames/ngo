@@ -20,7 +20,7 @@
 
             <!-- Profile Card -->
             <div class="bg-gray-800 rounded-xl shadow-lg p-6 mb-8 flex flex-col sm:flex-row sm:items-center gap-6">
-                <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : asset('assets/img/photo.jpg') }}"
+                <img src="{{ $user->profile_photo ? asset('storage/' . $user->profile_photo) : "https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-2190.jpg" }}"
                     class="h-28 w-28 rounded-full border-2 border-green-600 object-cover">
                 <div>
                     <h2 class="text-xl font-bold text-white">{{ $user->name }}</h2>

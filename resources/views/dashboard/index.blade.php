@@ -58,7 +58,7 @@
                     <!-- DP -->
                     <div class="flex justify-center mt-4">
                         <div class="w-28 h-34 overflow-hidden border-4 border-orange-500 shadow-md">
-                            <img src="{{ $user->profile_picture ? asset('storage/'.$user->profile_picture) : asset('assets/img/photo.jpg') }}"
+                            <img src="{{ $user->profile_picture ? asset('storage/'.$user->profile_picture) : "https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-2190.jpg" }}"
                                 alt="User Photo" class="w-full h-full object-cover">
                         </div>
                     </div> --}}
@@ -67,7 +67,7 @@
                     <div class="flex flex-col items-center mt-4 relative">
                         <!-- Profile Picture -->
                         <div class="w-28 h-34 overflow-hidden border-4 border-orange-500 shadow-md relative z-10">
-                            <img src="{{ $user->profile_photo ? asset('storage/'.$user->profile_photo) : asset('assets/img/photo.jpg') }}"
+                            <img src="{{ $user->profile_photo ? asset('storage/'.$user->profile_photo) : "https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-2190.jpg" }}"
                                 alt="User Photo" class="w-full h-full object-cover">
                         </div>
 

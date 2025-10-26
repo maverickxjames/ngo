@@ -91,7 +91,7 @@
                                 email: '{{ $user->email ?? 'N/A' }}',
                                 referral_code: '{{ $user->referral_code ?? 'N/A' }}',
                                 referred_by: '{{ $user->referrer->name ?? 'N/A' }}',
-                                profile_photo: '{{ $user->profile_photo ? asset("storage/".$user->profile_photo) : asset("assets/img/photo.jpg") }}',
+                                profile_photo: '{{ $user->profile_photo ? asset("storage/".$user->profile_photo) : "https://img.freepik.com/premium-vector/vector-flat-illustration-grayscale-avatar-user-profile-person-icon-gender-neutral-silhouette-profile-picture-suitable-social-media-profiles-icons-screensavers-as-templatex9xa_719432-2190.jpg" }}',
                                 status: '{{ ucfirst($user->status) }}',
                                 created_at: '{{ $user->created_at ? \Carbon\Carbon::parse($user->created_at)->format('d M Y') : 'N/A' }}',
                             };
