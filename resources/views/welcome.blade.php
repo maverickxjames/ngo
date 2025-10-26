@@ -15,6 +15,20 @@
     <link rel="stylesheet" href="assets/vendor/animate-wow/animate.min.css">
     <link rel="stylesheet" href="assets/vendor/flatpickr/flatpickr.min.css">
 
+    <title>{{ $seo['title'] ?? 'Akshardan Foundation' }}</title>
+<meta name="description" content="{{ $seo['description'] ?? '' }}">
+<meta name="keywords" content="{{ $seo['keywords'] ?? '' }}">
+<meta property="og:title" content="{{ $seo['title'] ?? '' }}">
+<meta property="og:description" content="{{ $seo['description'] ?? '' }}">
+<meta property="og:image" content="{{ $seo['image'] ?? asset('images/default.jpg') }}">
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png') }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png') }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png') }}">
+<link rel="manifest" href="{{ asset('site.webmanifest') }}">
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+<meta name="theme-color" content="#ffffff">
+
     <!-- custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
