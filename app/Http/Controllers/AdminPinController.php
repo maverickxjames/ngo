@@ -43,7 +43,8 @@ public function searchUsers(Request $request)
         ->where(function($q) use ($search) {
             $q->where('name', 'like', "%$search%")
               ->orWhere('username', 'like', "%$search%")
-              ->orWhere('phone', 'like', "%$search%");
+              ->orWhere('phone', 'like', "%$search%")
+              ->orWhere('form_number', 'like', "%$search%");
         })
         ->limit(15)
         ->get(['id', 'name', 'username', 'phone', 'profile_photo']);
