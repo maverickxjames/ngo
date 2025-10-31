@@ -1,4 +1,4 @@
-<div x-data="{ sidebarOpen: false }" class="min-h-screen flex">
+<div x-data="{ sidebarOpen: false }" class=" flex">
 
     <!-- 📱 Mobile Toggle Button -->
     <button @click="sidebarOpen = true"
@@ -35,6 +35,10 @@
                 <a href="{{ route('admin.users') }}"
                    class="flex items-center px-3 py-2 rounded-md hover:bg-gray-700 transition {{ request()->routeIs('admin.users*') ? 'bg-green-600 text-white' : '' }}">
                     <i class="ri-user-3-line mr-2"></i> Manage Users
+                </a>
+                <a href="{{ route('admin.pins') }}"
+                   class="flex items-center px-3 py-2 rounded-md hover:bg-gray-700 transition {{ request()->routeIs('admin.pins*') ? 'bg-green-600 text-white' : '' }}">
+                    <i class="ri-shield-keyhole-line mr-2"></i> Generate Pin
                 </a>
 
                 <a href="{{ route('admin.payments') }}"

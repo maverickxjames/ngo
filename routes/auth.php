@@ -12,12 +12,14 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 
+Route::get('/register/{referral}', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
+Route::post('/register/{referral}', [RegisterController::class, 'store'])->name('register.store');
+
 Route::middleware('guest')->group(function () {
 Route::get('/register', [RegisterController::class, 'referCodePage'])->name('register.referral');
 Route::post('/register', [RegisterController::class, 'checkReferral']);
 
-Route::get('/register/{referral}', [RegisterController::class, 'showRegistrationForm'])->name('register.form');
-Route::post('/register/{referral}', [RegisterController::class, 'store'])->name('register.store');
+
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');

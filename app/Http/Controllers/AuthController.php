@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use App\Models\ActivationPin;
 
 class AuthController extends Controller
 {
@@ -30,10 +31,10 @@ class AuthController extends Controller
             'username'    => ['required', 'string', 'max:255', 'unique:users,username'],
             'password'    => ['required', 'string', 'min:8', 'confirmed'],
             'mpin'        => ['required', 'digits_between:4,6'],
-            'referral_code' => ['required', 'exists:users,referral_code,status,active'],
+            'referral_code' => ['required', 'exists:users,form_number,status,active'],
         ]);
 
-        $inviter = User::where('referral_code', $request->referral_code)->first();
+        $inviter = User::where('form_number', $request->referral_code)->first();
         
         $user = User::create([
             'form_number' => $request->form_number,
@@ -123,4 +124,41 @@ public function verifyMpin(Request $request)
         $request->session()->regenerateToken();
         return redirect('/login');
     }
+
+
+    public function showActivationPage()
+{
+    return view('auth.activate-pin'); // make this page
+}
+
+public function activatePin(Request $request)
+{
+    $request->validate([
+        'pin_digits' => 'required|array|min:4|max:6'
+    ]);
+
+    $pin = implode('', $request->pin_digits);
+
+    $pinData = ActivationPin::where('pin', $pin)
+                ->whereNull('used_by')
+                ->first();
+
+    if (!$pinData) {
+        return back()->withErrors(['pin' => 'अमान्य या पहले से उपयोग किया गया PIN']);
+    }
+
+    $user = Auth::user();
+    $user->status = 'active';
+    $user->save();
+
+    $pinData->used_by = $user->id;
+    $pinData->used_at = now();
+    $pinData->status = 'used';
+    $pinData->save();
+
+    return redirect()->route('dashboard')
+        ->with('success', 'आपका खाता सफलतापूर्वक सक्रिय हो गया ✅');
+}
+
+
 }

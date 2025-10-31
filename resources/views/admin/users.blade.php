@@ -8,7 +8,7 @@
         @include('admin.sidebar')
 
         <!-- ✅ Main Content -->
-        <div class="flex-1 p-6 sm:p-8">
+        <div class="flex-1 mt-14 p-6 sm:p-8">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 border-b border-gray-700 pb-3">
                 <h1 class="text-2xl font-bold mb-3 sm:mb-0">Manage Users</h1>
 
@@ -42,6 +42,7 @@
                                     <th class="px-6 py-3 text-left whitespace-nowrap">Form No.</th>
                                     <th class="px-6 py-3 text-left whitespace-nowrap">Name</th>
                                     <th class="px-6 py-3 text-left whitespace-nowrap">Phone</th>
+                                    <th class="px-6 py-3 text-left whitespace-nowrap">Aadhar</th>
                                     <th class="px-6 py-3 text-left whitespace-nowrap">Status</th>
                                     <th class="px-6 py-3 text-left whitespace-nowrap">Joined</th>
                                     <th class="px-6 py-3 text-center whitespace-nowrap">Action</th>
@@ -55,6 +56,7 @@
                                         <td class="px-6 py-3 font-medium text-white">{{ $user->form_number }}</td>
                                         <td class="px-6 py-3">{{ $user->name }}</td>
                                         <td class="px-6 py-3 text-gray-400">{{ $user->phone }}</td>
+                                        <td class="px-6 py-3 text-gray-400">{{ $user->education }}</td>
                                         <td class="px-6 py-3">
                                             <span
                                                 class="px-3 py-1 rounded-full text-xs font-semibold 

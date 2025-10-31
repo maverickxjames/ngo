@@ -57,7 +57,7 @@
                         <p><span class="font-semibold text-gray-400">DOB:</span> {{ $user->dob ?? 'N/A' }}</p>
                         <p><span class="font-semibold text-gray-400">Gender:</span> {{ ucfirst($user->gender ?? 'N/A') }}
                         </p>
-                        <p><span class="font-semibold text-gray-400">Education:</span> {{ $user->education ?? 'N/A' }}</p>
+                        <p><span class="font-semibold text-gray-400">Aadhar:</span> {{ $user->education ?? 'N/A' }}</p>
                     </div>
                 </div>
 

@@ -149,6 +149,9 @@
                         <a href="{{ route('referrals.tree') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
                             <i class="ri-team-line mr-3 text-lg text-green-600"></i> Team Tree
                         </a>
+                        <a href="{{ route('user.pins') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
+                            <i class="ri-shield-keyhole-line mr-3 text-lg text-green-600"></i> Manage PIN
+                        </a>
                         <a href="{{ route('user.payouts') }}" class="flex items-center px-4 py-2 rounded-lg hover:bg-green-50 hover:text-green-700">
                             <i class="ri-wallet-3-line mr-3 text-lg text-green-600"></i> Payout
                         </a>

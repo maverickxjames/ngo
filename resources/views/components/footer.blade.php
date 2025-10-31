@@ -1,6 +1,6 @@
 <div>
      <footer class="ul-footer">
-        <div class="ul-footer-top">
+        {{-- <div class="ul-footer-top">
             <div class="ul-footer-container">
                 <div class="ul-footer-top-contact-infos">
                     <!-- single info -->
@@ -49,14 +49,14 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="ul-footer-middle">
             <div class="ul-footer-container">
                 <div class="ul-footer-middle-wrapper wow animate__fadeInUp">
                     <div class="ul-footer-about">
                         <a href="#0"><img src="assets/img/logo.png" alt="logo" class="logo"></a>
-                        <p class="ul-footer-about-txt">अनाथ व गरीब बच्चों को पेन, पेंसिल, स्लेट व स्कूल बैग बाँटना</p>
+                        <p class="ul-footer-about-txt">गरीब व अनाथ बच्चो के शिक्षा व शादी में सहयोग करना</p>
                         <div class="ul-footer-socials">
                             <a href="#0"><i class="flaticon-facebook"></i></a>
                             <a href="#0"><i class="flaticon-twitter"></i></a>
@@ -70,9 +70,9 @@
 
                         <div class="ul-footer-widget-links">
                             <a href="#0">About Us</a>
-                            <a href="#0">Our Services</a>
+                            {{-- <a href="#0">Our Services</a>
                             <a href="#0">Our Blogs</a>
-                            <a href="#0">FAQ’S</a>
+                            <a href="#0">FAQ’S</a> --}}
                             <a href="#0">Contact Us</a>
                         </div>
                     </div>
@@ -118,8 +118,8 @@
                     <div class="ul-footer-widget ul-nwsltr-widget">
                         <h3 class="ul-footer-widget-title">Contact Us</h3>
                         <div class="ul-footer-widget-links ul-footer-contact-links">
-                            <a href="mailto:info@example.com"><i class="flaticon-mail"></i> info@example.com</a>
-                            <a href="tel:919893650250"><i class="flaticon-telephone-call"></i> +91 98936 50250</a>
+                            {{-- <a href="mailto:info@example.com"><i class="flaticon-mail"></i> info@example.com</a>
+                            <a href="tel:919893650250"><i class="flaticon-telephone-call"></i> +91 98936 50250</a> --}}
                         </div>
                         <form action="#0" class="ul-nwsltr-form">
                             <div class="top">
@@ -131,7 +131,7 @@
                                 <label for="nwsltr-agreement" class="ul-checkbox-wrapper">
                                     <input type="checkbox" name="agreement" id="nwsltr-agreement" hidden>
                                     <span class="ul-checkbox"><i class="flaticon-tick"></i></span>
-                                    <span class="ul-checkbox-txt">I agree with the <a href="#0">Privacy Policy</a></span>
+                                    <span class="ul-checkbox-txt">I agree with the <a href="{{ route('policy.main') }}">Privacy Policy</a></span>
                                 </label>
                             </div>
                         </form>
@@ -147,7 +147,7 @@
                     <p class="copyright-txt">&copy;
                         <span id="footer-copyright-year"></span> Akshardan Foundation. All rights reserved
                     </p>
-                    <div class="ul-footer-bottom-nav"><a href="#0">Terms & Conditions</a> <a href="#0">Privacy Policy</a></div>
+                    <div class="ul-footer-bottom-nav"><a href="{{ route('terms.main') }}">Terms & Conditions</a> <a href="{{ route('policy.main') }}">Privacy Policy</a></div>
                 </div>
             </div>
         </div>

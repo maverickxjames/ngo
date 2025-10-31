@@ -8,7 +8,7 @@
     @include('admin.sidebar')
 
     <!-- ✅ Main Content -->
-    <div class="flex-1 p-8 bg-gray-900 text-gray-100 min-h-screen">
+    <div class="flex-1 mt-10 p-8 bg-gray-900 text-gray-100 min-h-screen">
         <h1 class="text-2xl font-bold mb-6 border-b border-gray-700 pb-2">Earnings</h1>
 
         <!-- ✅ Earnings Table -->

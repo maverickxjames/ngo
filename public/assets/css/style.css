@@ -1885,7 +1885,7 @@ button {
   inset: 0;
   left: auto;
   border-radius: 999px 0 0 999px;
-  background: url(../img/donations-bg-img.jpg) no-repeat center center/cover;
+  background: url(../img/f6fed7df-f150-4fe3-885b-ddb432b45dd3.png) no-repeat center center/cover;
   width: clamp(0px, 46.56vw, 886px);
 }
 @media screen and (max-width: 991px) {
@@ -2200,7 +2200,7 @@ button {
   justify-content: center;
   flex-direction: column;
   background: no-repeat center center/cover;
-  background-image: url(../img/stat-bg.png);
+  background-image: url(../img/count-bg.jpg);
   transition: 0.4s ease;
   position: relative;
   z-index: 1;

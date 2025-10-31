@@ -8,6 +8,9 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\UserPinController;
+use App\Http\Controllers\AdminPinController;
+
 
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
@@ -72,11 +75,17 @@ Route::middleware('guest')->group(function () {
     // Activation payment callback
     Route::post('payment/callback', [PaymentController::class, 'callback'])->name('payment.callback');
 
-    Route::get('/about-us', [WebsiteController::class,'about'])->name('about');
-    Route::get('/contact-us', [WebsiteController::class,'contact'])->name('contact');
+
+
+
 
 
 });
+
+    Route::get('/about-us', [WebsiteController::class,'about'])->name('about');
+    Route::get('/contact-us', [WebsiteController::class,'contact'])->name('contact');
+    Route::get('/terms-of-use', [WebsiteController::class,'terms'])->name('terms.main');
+    Route::get('/policy', [WebsiteController::class,'policy'])->name('policy.main');
 
 // Authenticated user routes
 Route::middleware(['auth', 'verified','verify.mpin'])->group(function () {
@@ -98,6 +107,19 @@ Route::middleware(['auth', 'verified','verify.mpin'])->group(function () {
 
                 Route::post('mpin', [AuthController::class, 'verifyMpin'])->name('mpin.verify');
     Route::get('mpin', [AuthController::class, 'showMpinForm'])->name('mpin.verify.form');
+
+    Route::get('/activate-pin', [AuthController::class, 'showActivationPage'])
+    ->name('user.activate-pin.form');
+
+Route::post('/activate-pin', [AuthController::class, 'activatePin'])
+    ->name('user.activate-pin.submit');
+
+
+    // User PIN Page
+Route::get('/my-pins', [UserPinController::class, 'index'])->name('user.pins');
+
+// Use Pin
+Route::get('/use-pin/{pin}', [UserPinController::class, 'usePin'])->name('user.usePin');
 
 
 
@@ -123,6 +145,14 @@ Route::middleware(['auth', 'role:Super Admin|Finance Admin|Support Admin'])->pre
     Route::put('users/{user}/update-personal', [AdminController::class, 'updatePersonal'])->name('users.updatePersonal');
 Route::put('users/{user}/update-contact', [AdminController::class, 'updateContact'])->name('users.updateContact');
 Route::put('users/{user}/update-bank', [AdminController::class, 'updateBank'])->name('users.updateBank');
+
+// Admin - Manage Pins
+Route::get('pins', [AdminPinController::class, 'index'])->name('pins');
+Route::post('pins/generate', [AdminPinController::class, 'generate'])->name('pins.generate');
+
+Route::get('search-users', [AdminPinController::class, 'searchUsers']);
+
+
 
 
 

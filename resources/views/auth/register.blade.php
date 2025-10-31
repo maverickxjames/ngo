@@ -18,28 +18,56 @@
         </div>
 
         <!-- Sponsor / कार्यकर्ता Info -->
-        <div
-            class="flex items-center justify-between bg-gradient-to-r from-green-50 to-orange-50 border border-green-200 rounded-xl p-4 mb-6 shadow-sm">
-            <div class="flex items-center space-x-3">
-                <div
-                    class="bg-green-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-semibold uppercase">
-                    {{ strtoupper(substr($referrer->name, 0, 1)) }}
-                </div>
-                <div>
-                    <p class="text-sm text-gray-600">कार्यकर्ता / Sponsor</p>
-                    <p class="text-base font-bold text-green-800">{{ $referrer->name }}</p>
-                    <p class="text-xs text-gray-500">Referral Code: <span class="font-semibold text-orange-600">{{
-                            $referrer->referral_code }}</span></p>
-                </div>
-            </div>
-            <div class="hidden sm:block">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 opacity-80" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
+<div class="flex items-center justify-between bg-gradient-to-r from-green-50 to-orange-50 border border-green-200 rounded-xl p-4 mb-6 shadow-sm">
+    <div class="flex items-center space-x-3">
+        <div class="bg-green-600 text-white rounded-full h-10 w-10 flex items-center justify-center font-semibold uppercase">
+            {{ strtoupper(substr($referrer->name, 0, 1)) }}
         </div>
+        <div>
+            <p class="text-sm text-gray-600">कार्यकर्ता / Sponsor</p>
+            <p class="text-base font-bold text-green-800">{{ $referrer->name }}</p>
+
+            <!-- Referral Code -->
+            <p class="text-xs text-gray-600">
+                कार्यकर्ता क्रमांक : 
+                <span class="font-semibold text-orange-600">{{ $referrer->form_number }}</span>
+            </p>
+
+            <!-- ✅ Show PIN -->
+            @php
+                $pin = session('pin');
+                $isUsed = \App\Models\ActivationPin::where('pin', $pin)->whereNotNull('used_by')->exists();
+            @endphp
+
+            <p class="text-xs mt-1">
+                Activation PIN: 
+                @if($pin)
+                    <span class="font-bold px-2 py-0.5 rounded 
+                        {{ $isUsed ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-700' }}">
+                        {{ $pin }}
+                    </span>
+
+                    @if($isUsed)
+                        <span class="text-red-500 text-[11px] ml-1"> (Used)</span>
+                    @else
+                        <span class="text-green-500 text-[11px] ml-1"> (Valid)</span>
+                    @endif
+                @else
+                    <span class="text-gray-500">N/A</span>
+                @endif
+            </p>
+        </div>
+    </div>
+
+    <div class="hidden sm:block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-600 opacity-80" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+    </div>
+</div>
+
 
 
         <!-- Register Form -->
@@ -48,6 +76,8 @@
             class="space-y-5" enctype="multipart/form-data">
 
             @csrf
+
+            <input type="hidden" name="pin" value="{{ session('pin') }}">
 
             <!-- form_number -->
             <div>
@@ -109,7 +139,7 @@
 
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold text-gray-700 mb-1">शिक्षा *</label>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">आधार न. *</label>
                     <input type="text" name="education" value="{{ old('education') }}"
                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-500">
 

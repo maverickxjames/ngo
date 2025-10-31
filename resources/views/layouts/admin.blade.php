@@ -7,6 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        main{
+            margin-top: 4rem; /* Width of the sidebar */
+            padding: 1.5rem; /* Padding for content */
+        }
+    </style>
 </head>
 <body class="bg-gray-900 text-gray-100">
     @yield('content')

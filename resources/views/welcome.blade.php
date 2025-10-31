@@ -1,3 +1,9 @@
+<?php 
+$settings = App\Models\Setting::pluck('value', 'key')->toArray();
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +102,7 @@
                         <div class="ul-banner-txt">
                             <div class="wow animate__fadeInUp">
                                 <span class="ul-banner-sub-title ul-section-sub-title">Change The World Together</span>
-                                <h1 class="ul-banner-title" style="line-height: 1.2em" >अनाथ व गरीब बच्चों को पेन, पेंसिल, स्लेट व स्कूल बैग बाँटना</h1>
+                                <h1 class="ul-banner-title" style="line-height: 1.2em" >गरीब व अनाथ बच्चो के शिक्षा व शादी में सहयोग करना</h1>
                                 <p class="ul-banner-descr"> <strong>हमारा दृष्टिकोण : </strong> एक ऐसे समाज का निर्माण करना जहाँ प्रत्येक व्यक्ति समर्थित, सशक्त और मूल्यवान हो। हम गरीबी और लाचारी के संघर्षों से मुक्त दुनिया की कल्पना करते हैं, जहाँ करुणा और सेवा मार्गदर्शक सिद्धांत हों।</p>
                                 <div class="ul-banner-btns">
                                     <a href="#0" class="ul-btn"><i class="flaticon-fast-forward-double-right-arrows-symbol"></i> Make Donation</a>
@@ -106,7 +112,7 @@
                                             <img src="assets/img/user-1.png" alt="Person">
                                             <img src="assets/img/user-3.png" alt="Person">
                                             <img src="assets/img/user-2.png" alt="Person">
-                                            <span class="number">2.M</span>
+                                            <span class="number">2.K</span>
                                         </div>
                                         <span class="txt">Active donors</span>
                                     </div>
@@ -145,7 +151,7 @@
                     <div class="col">
                         <div class="ul-about-imgs">
                             <div class="img-wrapper">
-                                <img src="assets/img/about-img.png" alt="Image">
+                                <img src="assets/img/about-image.png" alt="Image">
                             </div>
                             <div class="ul-about-imgs-vectors">
                                 <img src="assets/img/about-img-vector-1.svg" alt="Image" class="vector-1">
@@ -172,19 +178,19 @@
                                         <li>There are many variations of solve</li>
                                     </ul>
                                 </div>
-                                <div class="block-right"><img src="assets/img/about-block-img.jpg" alt="Image"></div>
+                                <div style="display: none" class="block-right"><img src="assets/img/about-block-img.jpg" alt="Image"></div>
                             </div>
 
                             <div class="ul-about-bottom">
                                 <a href="#0" class="ul-btn"><i class="flaticon-fast-forward-double-right-arrows-symbol"></i> Explore More</a>
 
-                                <div class="ul-about-call">
+                                {{-- <div class="ul-about-call">
                                     <div class="icon"><i class="flaticon-telephone-call"></i></div>
                                     <div class="txt">
                                         <span class="call-title">Call Any Time</span>
                                         <a href="tel:+919893650250">+91 98936 50250</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -215,7 +221,7 @@
                                 <img src="assets/img/user-1.png" alt="Person">
                                 <img src="assets/img/user-3.png" alt="Person">
                                 <img src="assets/img/user-2.png" alt="Person">
-                                <span class="number">2.M</span>
+                                <span class="number">2.K</span>
                             </div>
                             <span class="txt text-white">Active donors</span>
                         </div>
@@ -235,20 +241,20 @@
                         <div class="swiper-slide">
                             <div class="ul-donation">
                                 <div class="ul-donation-img">
-                                    <img src="assets/img/school.png" alt="donation Image">
+                                    {{-- <img src="assets/img/school.png" alt="donation Image"> --}}
                                     <span class="tag">BLOCK COORDINATOR</span>
                                 </div>
                                 <div class="ul-donation-txt">
                                     <div class="ul-donation-progress">
-                                        <div class="donation-progress-container ul-progress-container">
+                                        {{-- <div class="donation-progress-container ul-progress-container">
                                             <div class="donation-progressbar ul-progressbar" data-ul-progress-value="55">
                                                 <div class="donation-progress-label ul-progress-label"></div>
                                             </div>
-                                        </div>
-                                        <div class="ul-donation-progress-labels">
+                                        </div> --}}
+                                        {{-- <div class="ul-donation-progress-labels">
                                             <span class="ul-donation-progress-label">Project Fund : ₹21,000</span>
                                             <span class="ul-donation-progress-label">Reward : ₹7,000</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <a href="#0" class="ul-donation-title">ब्लॉक कोऑर्डिनेटर (BLOCK COORDINATOR)</a>
                                     <p class="ul-donation-descr">प्रोजेक्ट: अनाथ व ग़रीब बच्चों को पेन, पेंसिल, स्लेट व स्कूल बैग बाँटना ।</p>
@@ -261,12 +267,12 @@
                         <div class="swiper-slide">
                             <div class="ul-donation">
                                 <div class="ul-donation-img">
-                                    <img src="assets/img/ev-sccoty.png" alt="donation Image">
+                                    {{-- <img src="assets/img/ev-sccoty.png" alt="donation Image"> --}}
                                     <span class="tag">BRANCH COORDINATOR</span>
                                 </div>
                                 <div class="ul-donation-txt">
                                     <div class="ul-donation-progress">
-                                        <div class="donation-progress-container ul-progress-container">
+                                        {{-- <div class="donation-progress-container ul-progress-container">
                                             <div class="donation-progressbar ul-progressbar" data-ul-progress-value="95">
                                                 <div class="donation-progress-label ul-progress-label"></div>
                                             </div>
@@ -274,7 +280,7 @@
                                         <div class="ul-donation-progress-labels">
                                             <span class="ul-donation-progress-label">Project Fund : ₹100,000</span>
                                             <span class="ul-donation-progress-label">Reward : EV Scooty</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <a href="#0" class="ul-donation-title">ब्रांच कोऑर्डिनेटर (BRANCH COORDINATOR)</a>
                                     <p class="ul-donation-descr">प्रोजेक्ट: बेसहारा सहयोग सेवा योजना <br> बेसहारा लोगों को कंबल, कपड़े, खाना व दवाइयाँ बाँटना</p>
@@ -287,12 +293,12 @@
                         <div class="swiper-slide">
                             <div class="ul-donation">
                                 <div class="ul-donation-img">
-                                    <img src="assets/img/bike.png" alt="donation Image">
+                                    {{-- <img src="assets/img/bike.png" alt="donation Image"> --}}
                                     <span class="tag">DISTRICT COORDINATOR</span>
                                 </div>
                                 <div class="ul-donation-txt">
                                     <div class="ul-donation-progress">
-                                        <div class="donation-progress-container ul-progress-container">
+                                        {{-- <div class="donation-progress-container ul-progress-container">
                                             <div class="donation-progressbar ul-progressbar" data-ul-progress-value="50">
                                                 <div class="donation-progress-label ul-progress-label"></div>
                                             </div>
@@ -300,7 +306,7 @@
                                         <div class="ul-donation-progress-labels">
                                             <span class="ul-donation-progress-label">Fund : ₹5,51,000</span>
                                             <span class="ul-donation-progress-label">Reward : Bike</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <a href="#0" class="ul-donation-title">डिस्ट्रिक्ट कोऑर्डिनेटर (DISTRICT COORDINATOR)</a>
                                     <p class="ul-donation-descr">प्रोजेक्ट: विधवा व दिव्यांग सहायता योजना <br>5 विधवाओं को सिलाई मशीन व 5 दिव्यांगों को व्हीलचेयर/साइकिल बाँटना</p>
@@ -313,12 +319,12 @@
                         <div class="swiper-slide">
                             <div class="ul-donation">
                                 <div class="ul-donation-img">
-                                    <img src="assets/img/alto.png" alt="donation Image">
+                                    {{-- <img src="assets/img/alto.png" alt="donation Image"> --}}
                                     <span class="tag">STATE COORDINATOR</span>
                                 </div>
                                 <div class="ul-donation-txt">
                                     <div class="ul-donation-progress">
-                                        <div class="donation-progress-container ul-progress-container">
+                                        {{-- <div class="donation-progress-container ul-progress-container">
                                             <div class="donation-progressbar ul-progressbar" data-ul-progress-value="64">
                                                 <div class="donation-progress-label ul-progress-label"></div>
                                             </div>
@@ -326,7 +332,7 @@
                                         <div class="ul-donation-progress-labels">
                                             <span class="ul-donation-progress-label">Fund : ₹15,00,000</span>
                                             <span class="ul-donation-progress-label">Reward : Alto Car</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <a href="#0" class="ul-donation-title">स्टेट कोऑर्डिनेटर (STATE COORDINATOR)</a>
                                     <p class="ul-donation-descr">प्रोजेक्ट: गौ ग्रास वाहन सहयोग योजना <br> आपके नगर में गौ ग्रास वाहन संचालित करना</p>
@@ -339,12 +345,12 @@
                         <div class="swiper-slide">
                             <div class="ul-donation">
                                 <div class="ul-donation-img">
-                                    <img src="assets/img/swift.png" alt="donation Image">
+                                    {{-- <img src="assets/img/swift.png" alt="donation Image"> --}}
                                     <span class="tag">NATIONAL COORDINATOR</span>
                                 </div>
                                 <div class="ul-donation-txt">
                                     <div class="ul-donation-progress">
-                                        <div class="donation-progress-container ul-progress-container">
+                                        {{-- <div class="donation-progress-container ul-progress-container">
                                             <div class="donation-progressbar ul-progressbar" data-ul-progress-value="80">
                                                 <div class="donation-progress-label ul-progress-label"></div>
                                             </div>
@@ -352,7 +358,7 @@
                                         <div class="ul-donation-progress-labels">
                                             <span class="ul-donation-progress-label">Fund : ₹51,00,000</span>
                                             <span class="ul-donation-progress-label">Reward : 1 Swift Car</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <a href="#0" class="ul-donation-title">नेशनल कोऑर्डिनेटर (NATIONAL COORDINATOR)</a>
                                     <p class="ul-donation-descr">प्रोजेक्ट: वृद्ध तीर्थ यात्रा योजना <br>20 ग़रीब महिलाओं को 1 धाम यात्रा ।</p>
@@ -365,12 +371,12 @@
                         <div class="swiper-slide">
                             <div class="ul-donation">
                                 <div class="ul-donation-img">
-                                    <img src="assets/img/scorpio.png" alt="donation Image">
+                                    {{-- <img src="assets/img/scorpio.png" alt="donation Image"> --}}
                                     <span class="tag">REPUBLIC COORDINATOR</span>
                                 </div>
                                 <div class="ul-donation-txt">
                                     <div class="ul-donation-progress">
-                                        <div class="donation-progress-container ul-progress-container">
+                                        {{-- <div class="donation-progress-container ul-progress-container">
                                             <div class="donation-progressbar ul-progressbar" data-ul-progress-value="95">
                                                 <div class="donation-progress-label ul-progress-label"></div>
                                             </div>
@@ -378,7 +384,7 @@
                                         <div class="ul-donation-progress-labels">
                                             <span class="ul-donation-progress-label">Fund : ₹1 करोड़ </span>
                                             <span class="ul-donation-progress-label">Reward : Scorpio Car</span>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <a href="#0" class="ul-donation-title">रिपब्लिक कोऑर्डिनेटर (REPUBLIC COORDINATOR)</a>
                                     <p class="ul-donation-descr">प्रोजेक्ट: अनाथ व गरीब बेटियों के सामूहिक विवाह सम्मेलन योजना (11 जोड़े)</p>
@@ -398,7 +404,7 @@
 
 
         <!-- DONATE SECTION START -->
-        <div class="ul-section-spacing">
+        {{-- <div class="ul-section-spacing">
             <div class="ul-container">
                 <div class="ul-donate-form-section">
                     <div class="row justify-content-between align-items-center">
@@ -469,7 +475,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- DONATE SECTION END -->
 
 
@@ -515,8 +521,8 @@
         </div>
         <!-- STATS SECTION END -->
 
-
-        <!-- EVENTS SECTION START -->
+       @if(isset($settings['is_homepage_event']) && $settings['is_homepage_event'] == 'true')
+       <!-- EVENTS SECTION START -->
         <section class="ul-events ul-section-spacing pt-0">
             <div class="ul-container">
                 <!-- heading -->
@@ -617,8 +623,11 @@
             </div>
         </section>
         <!-- EVENTS SECTION END -->
+       @endif
+        
 
 
+       @if(isset($settings['homepage_join_us']) && $settings['homepage_join_us'] == 'true')
         <!-- WHY JOIN SECTION START -->
         <section class="ul-why-join ul-section-spacing">
             <div class="ul-why-join-wrapper ul-section-spacing">
@@ -684,10 +693,12 @@
             </div>
         </section>
         <!-- WHY JOIN SECTION END -->
+       @endif 
+       
 
 
         <!-- TEAM SECTION START -->
-        <section class="ul-team ul-section-spacing pt-0">
+        <section class="ul-team ul-section-spacing pt-10">
             <div class="ul-container">
                 <!-- Heading -->
                 <div class="ul-section-heading justify-content-between">
@@ -714,8 +725,8 @@
                                 </div>
                             </div>
                             <div class="ul-team-member-info">
-                                <h3 class="ul-team-member-name"><a href="#0">निर्मल कुमार राठोर </a></h3>
-                                <p class="ul-team-member-designation">राष्ट्रीय अध्यक्ष </p>
+                                <h3 class="ul-team-member-name"><a href="#0">Nirmal Kumar Rathor </a></h3>
+                                <p class="ul-team-member-designation">DIRECTOR</p>
                             </div>
                         </div>
                     </div>
@@ -733,8 +744,8 @@
                                 </div>
                             </div>
                             <div class="ul-team-member-info">
-                                <h3 class="ul-team-member-name"><a href="#0">राधे बाघेला </a></h3>
-                                <p class="ul-team-member-designation">राष्ट्रीय कोषाध्यक्ष </p>
+                                <h3 class="ul-team-member-name"><a href="#0">Radhey Bagela</a></h3>
+                                <p class="ul-team-member-designation">DIRECTOR</p>
                             </div>
                         </div>
                     </div>
@@ -753,7 +764,7 @@
                             </div>
                             <div class="ul-team-member-info">
                                 <h3 class="ul-team-member-name"><a href="#0">अनुराग शर्मा </a></h3>
-                                <p class="ul-team-member-designation">राष्ट्रीय सचिव </p>
+                                <p class="ul-team-member-designation">DIRECTOR</p>
                             </div>
                         </div>
                     </div>
@@ -807,7 +818,7 @@
                                 <p class="ul-review-descr">आपके संगठन ने हमारी बस्ती के बच्चों को शिक्षा से जोड़कर नई रोशनी दी है। अब हमें यक़ीन है कि उनका भविष्य उज्ज्वल होगा।</p>
                                 <div class="ul-review-bottom">
                                     <div class="ul-review-reviewer">
-                                        <div class="reviewer-image"><img src="assets/img/member-1.jpg" alt="reviewer image"></div>
+                                        {{-- <div class="reviewer-image"><img src="assets/img/member-1.jpg" alt="reviewer image"></div> --}}
                                         <div>
                                             <h3 class="reviewer-name">Geeta Bai</h3>
                                             <span class="reviewer-role">गृहणी </span>
@@ -833,7 +844,7 @@
                                 <p class="ul-review-descr">गरीब परिवारों को स्वास्थ्य सेवाएँ पहुँचाने का जो कार्य आप कर रहे हैं, वह वाकई सराहनीय है। आपने हमें आशा दी है।</p>
                                 <div class="ul-review-bottom">
                                     <div class="ul-review-reviewer">
-                                        <div class="reviewer-image"><img src="assets/img/member-2.jpg" alt="reviewer image"></div>
+                                        {{-- <div class="reviewer-image"><img src="assets/img/member-2.jpg" alt="reviewer image"></div> --}}
                                         <div>
                                             <h3 class="reviewer-name">अजय कुमार</h3>
                                             <span class="reviewer-role">दुकानदार </span>
@@ -859,7 +870,7 @@
                                 <p class="ul-review-descr">आपके सहयोग से हमने रोज़गार के नए अवसर पाए। अब हम अपने पैरों पर खड़े हो पा रहे हैं।</p>
                                 <div class="ul-review-bottom">
                                     <div class="ul-review-reviewer">
-                                        <div class="reviewer-image"><img src="assets/img/member-3.jpg" alt="reviewer image"></div>
+                                        {{-- <div class="reviewer-image"><img src="assets/img/member-3.jpg" alt="reviewer image"></div> --}}
                                         <div>
                                             <h3 class="reviewer-name">सुनीता देवी </h3>
                                             <span class="reviewer-role">सिलाई कारीगर</span>
@@ -885,7 +896,7 @@
                                 <p class="ul-review-descr">एनजीओ द्वारा चलाए गए प्रशिक्षण कार्यक्रम ने युवाओं को आत्मनिर्भर बनने का मार्ग दिखाया है। यह समाज के लिए बहुत बड़ा योगदान है।</p>
                                 <div class="ul-review-bottom">
                                     <div class="ul-review-reviewer">
-                                        <div class="reviewer-image"><img src="assets/img/member-4.jpg" alt="reviewer image"></div>
+                                        {{-- <div class="reviewer-image"><img src="assets/img/member-4.jpg" alt="reviewer image"></div> --}}
                                         <div>
                                             <h3 class="reviewer-name">रवि शर्मा </h3>
                                             <span class="reviewer-role">रिक्शा चालक</span>
@@ -911,7 +922,7 @@
                                 <p class="ul-review-descr">आपके प्रयासों से हमारी गाँव की महिलाओं को आत्मविश्वास और स्वावलंबन मिला है। अब हम अपने अधिकारों के प्रति जागरूक हैं।</p>
                                 <div class="ul-review-bottom">
                                     <div class="ul-review-reviewer">
-                                        <div class="reviewer-image"><img src="assets/img/member-1.jpg" alt="reviewer image"></div>
+                                        {{-- <div class="reviewer-image"><img src="assets/img/member-1.jpg" alt="reviewer image"></div> --}}
                                         <div>
                                             <h3 class="reviewer-name">कविता मिश्रा</h3>
                                             <span class="reviewer-role">आंगनवाड़ी कार्यकर्ता</span>
@@ -931,7 +942,7 @@
         </section>
         <!-- TESTIMONIAL SECTION END -->
 
-
+        @if(isset($settings['is_homepage_blog']) && $settings['is_homepage_blog'] == 'true')
         <!-- BLOG SECTION START -->
         <section class="ul-blogs ul-section-spacing">
             <div class="ul-blogs-container wow animate__fadeInUp">
@@ -1073,10 +1084,12 @@
             </div>
         </section>
         <!-- BLOG SECTION END -->
+        @endif 
+        
 
-
-        <!-- GALLERY SECTION START -->
-        <div class="ul-gallery overflow-hidden ul-section-spacing mx-auto pt-0">
+        @if(isset($settings['is_homepage_gallery']) && $settings['is_homepage_gallery'] == 'true')
+            <!-- GALLERY SECTION START -->
+        <div class="ul-gallery overflow-hidden ul-section-spacing mx-auto pt-10">
             <div class="ul-gallery-slider swiper">
                 <div class="swiper-wrapper">
                     <!-- single gallery item -->
@@ -1146,6 +1159,9 @@
             </div>
         </div>
         <!-- GALLERY SECTION END -->
+        @endif
+
+    
     </main>
 
 
